@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="profilePicWidth">200dp</dimen>
+    <dimen name="profilePicHeight">200dp</dimen>
+    <dimen name="profilePicMarginBottom">10dp</dimen>
+    <dimen name="fontSize">10pt</dimen>
+    <dimen name="textViewMarginLeft">10dp</dimen>
+    <dimen name="textViewMarginRight">10dp</dimen>
+    <dimen name="editTextMarginRight">10dp</dimen>
+    <dimen name="buttonMarginRight">10dp</dimen>
+    <dimen name="buttonMarginBottom">50dp</dimen>
+</resources>

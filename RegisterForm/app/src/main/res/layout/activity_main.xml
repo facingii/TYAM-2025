@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/design_default_color_primary"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="@dimen/profilePicWidth"
+        android:layout_height="@dimen/profilePicHeight"
+        android:src="@drawable/profile"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/profilePicMarginBottom"
+        android:contentDescription="@string/profile_picture"
+        />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:text="@string/first_name"
+        android:gravity="center_vertical"
+        android:layout_alignTop="@id/edtName"
+        android:layout_alignBottom="@id/edtName"
+        android:layout_below="@id/profilePic"
+        android:layout_marginEnd="@dimen/textViewMarginLeft"
+        android:layout_marginStart="@dimen/textViewMarginRight"
+        />
+
+    <EditText
+        android:id="@+id/edtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:layout_toEndOf="@id/textView1"
+        android:layout_below="@id/profilePic"
+        android:layout_marginEnd="@dimen/editTextMarginRight"
+        android:hint="@string/name"
+        android:inputType="text"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:text="@string/last_name"
+        android:gravity="center_vertical"
+        android:layout_below="@id/textView1"
+        android:layout_alignTop="@id/edtLastName"
+        android:layout_alignBottom="@id/edtLastName"
+        android:layout_marginEnd="@dimen/textViewMarginLeft"
+        android:layout_marginStart="@dimen/textViewMarginRight"
+        />
+
+    <EditText
+        android:id="@+id/edtLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:autofillHints="Type your first name"
+        android:layout_toEndOf="@id/textView2"
+        android:layout_below="@id/edtName"
+        android:layout_marginEnd="@dimen/editTextMarginRight"
+        android:hint="@string/last_name"
+        android:inputType="text"
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:text="@string/age"
+        android:gravity="center_vertical"
+        android:layout_alignTop="@id/edtAge"
+        android:layout_alignBottom="@id/edtAge"
+        android:layout_below="@id/textView2"
+        android:layout_marginEnd="@dimen/textViewMarginLeft"
+        android:layout_marginStart="@dimen/textViewMarginRight"
+        />
+
+    <EditText
+        android:id="@+id/edtAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:layout_toEndOf="@id/textView1"
+        android:layout_below="@id/edtLastName"
+        android:layout_marginEnd="@dimen/editTextMarginRight"
+        android:hint="@string/age"
+        android:inputType="text"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:text="@string/phone"
+        android:gravity="center_vertical"
+        android:layout_alignTop="@id/edtPhone"
+        android:layout_alignBottom="@id/edtPhone"
+        android:layout_below="@id/textView3"
+        android:layout_marginStart="@dimen/textViewMarginLeft"
+        android:layout_marginEnd="@dimen/textViewMarginRight"
+        />
+
+    <EditText
+        android:id="@+id/edtPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:layout_toEndOf="@id/textView1"
+        android:layout_below="@id/edtAge"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/phone"
+        android:inputType="phone"
+        />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/buttonMarginRight"
+        android:layout_marginBottom="@dimen/buttonMarginBottom"
+        />
+
+</RelativeLayout>
