@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RegisterForm</string>
+    <string name="profile_picture">Image</string>
+    <string name="first_name">First Name</string>
+    <string name="name">Prenom</string>
+    <string name="last_name">Nom</string>
+    <string name="age">Age</string>
+    <string name="phone">Tèlèphone</string>
+    <string name="save">Sauvegarder</string>
+</resources>
