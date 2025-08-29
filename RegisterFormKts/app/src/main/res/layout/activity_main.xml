@@ -10,6 +10,7 @@
         android:background="@color/design_default_color_primary"
         android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
+        app:titleTextColor="@color/white"
         android:layout_height="?attr/actionBarSize" />
 
     <ImageView
