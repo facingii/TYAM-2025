@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.outlook.gonzasosa.registerform.databinding.ActivityMainBinding;
 import com.outlook.gonzasosa.registerform.vm.FormViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,13 +22,15 @@ public class MainActivity extends AppCompatActivity {
     private final String PHONE_KEY = "Phone";
 
     private FormViewModel viewModel;
-    private EditText edtFirstName, edtLastName, edtAge, edtPhone;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(FormViewModel.class);
-        setContentView (R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        setContentView (binding.getRoot ());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         if (toolbar != null)
@@ -36,15 +39,10 @@ public class MainActivity extends AppCompatActivity {
             setTitle (ACTIVITY_TITLE);
         }
 
-        edtFirstName = findViewById(R.id.edtName);
-        edtLastName = findViewById(R.id.edtLastName);
-        edtAge = findViewById(R.id.edtAge);
-        edtPhone = findViewById(R.id.edtPhone);
-
         Button btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(view ->
         {
-            String firstName = edtFirstName.getText().toString();
+            String firstName = binding.edtName.getText().toString();
             Toast.makeText(this, firstName, Toast.LENGTH_SHORT).show();
         } );
     }
@@ -53,20 +51,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        viewModel.FirstName = edtFirstName.getText().toString();
-        viewModel.LastName = edtLastName.getText().toString();
-        viewModel.Age = Integer.parseInt(edtAge.getText().toString());
-        viewModel.Phone = edtPhone.getText().toString();
+        binding.edtName.setText(viewModel.FirstName);
+        binding.edtLastName.setText(viewModel.LastName);
+        binding.edtAge.setText(String.valueOf(viewModel.Age));
+        binding.edtPhone.setText(viewModel.Phone);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        edtFirstName.setText(viewModel.FirstName);
-        edtLastName.setText(viewModel.LastName);
-        edtAge.setText(String.valueOf(viewModel.Age));
-        edtPhone.setText(viewModel.Phone);
+        viewModel.FirstName = binding.edtName.getText().toString();
+        viewModel.LastName = binding.edtLastName.getText().toString();
+        viewModel.Age = Integer.parseInt(binding.edtAge.getText().toString());
+        viewModel.Phone = binding.edtPhone.getText().toString();
     }
 
     @Override
