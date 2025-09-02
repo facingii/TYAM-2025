@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ActivitiesTransition</string>
+    <string name="dial">Dial</string>
+    <string name="phone_number">Phone number</string>
+    <string name="third_activity">Third Activity</string>
+    <string name="activity_2">Activity 1</string>
+    <string name="activity_3">Activity 3</string>
+</resources>
