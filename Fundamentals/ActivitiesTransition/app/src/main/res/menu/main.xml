@@ -4,13 +4,13 @@
 
     <item android:id="@+id/mnuBrowse"
         android:title="@string/browse"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_web_browser"
         app:showAsAction="ifRoom"
         />
 
     <item android:id="@+id/mnuPhoneCall"
         android:title="@string/call"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_phone_call"
         app:showAsAction="ifRoom"
         />
 

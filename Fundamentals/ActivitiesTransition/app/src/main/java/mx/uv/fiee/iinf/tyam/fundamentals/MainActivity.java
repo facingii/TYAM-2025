@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot ());
 
         setSupportActionBar(binding.toolbar);
-        setTitle (R.string.app_name);
+        setTitle (R.string.app_title);
     }
 
     /**
