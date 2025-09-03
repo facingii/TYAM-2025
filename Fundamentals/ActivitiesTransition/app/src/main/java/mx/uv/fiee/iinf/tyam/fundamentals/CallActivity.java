@@ -7,27 +7,33 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import mx.uv.fiee.iinf.tyam.fundamentals.databinding.ActivityThirdBinding;
+import mx.uv.fiee.iinf.tyam.fundamentals.databinding.ActivityCallBinding;
 
-public class ThirdActivity extends AppCompatActivity {
+public class CallActivity extends AppCompatActivity {
 
-    ActivityThirdBinding binding;
+    ActivityCallBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
-        binding = ActivityThirdBinding.inflate (getLayoutInflater ());
+        binding = ActivityCallBinding.inflate (getLayoutInflater ());
         setContentView (binding.getRoot ());
 
         binding.btnCall.setOnClickListener(v -> {
         });
 
+        /**
+         * Abre una página web en el navegador predeterminado.
+         */
         binding.btnBrowse.setOnClickListener(v -> {
             var webpage = Uri.parse("https://www.android.com");
             var intent = new Intent(Intent.ACTION_VIEW, webpage);
             startActivity(intent);
         });
 
+        /**
+         * Abre una aplicación de correo electrónico.
+         */
         binding.btnEmail.setOnClickListener(v -> {
             Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("text/plain");
