@@ -3,6 +3,9 @@
     <string name="dial">Dial</string>
     <string name="phone_number">Phone number</string>
     <string name="third_activity">Third Activity</string>
-    <string name="activity_2">Activity 1</string>
+    <string name="activity_2">Activity 2</string>
     <string name="activity_3">Activity 3</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="browse">Browse</string>
+    <string name="email">Email</string>
 </resources>
