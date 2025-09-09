@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ActivitiesTransition</string>
+    <string name="app_name">ActivitiesTransitionKts</string>
     <string name="dial">Dial</string>
     <string name="phone_number">Phone number</string>
     <string name="third_activity">Third Activity</string>
@@ -10,7 +10,4 @@
     <string name="email">Email</string>
     <string name="call">Call</string>
     <string name="app_title">Transitions</string>
-    <string name="call_title">Call</string>
-    <string name="navigation_drawer_open">Open</string>
-    <string name="navigation_drawer_close">Close</string>
 </resources>

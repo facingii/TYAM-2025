@@ -11,13 +11,16 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.navigation.NavigationView;
+
 import mx.uv.fiee.iinf.tyam.fundamentals.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     /**
      * Abre la actividad de llamadas telefónicas.
@@ -39,13 +42,27 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate (@Nullable Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot ());
 
-        setSupportActionBar(binding.toolbar);
+        setSupportActionBar (binding.toolbar);
         setTitle (R.string.app_title);
+
+        binding.navView.setNavigationItemSelectedListener (this);
+
+        // agrega el toggle al drawer layout y sincroniza su estado
+        var toogle = new ActionBarDrawerToggle (
+                this,
+                binding.drawer,
+                binding.toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+        );
+
+        binding.drawer.addDrawerListener(toogle);
+        toogle.syncState();
     }
 
     /**
@@ -55,9 +72,9 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu (Menu menu) {
         getMenuInflater ().inflate (R.menu.main, menu);
-        return super.onPrepareOptionsMenu(menu);
+        return super.onPrepareOptionsMenu (menu);
     }
 
     /**
@@ -67,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected (@NonNull MenuItem item) {
         if (item.getItemId () == R.id.mnuPhoneCall) {
             if (!CheckCallPermission ()) {
                 RequestPhoneCallPermission ();
@@ -127,4 +144,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+
+    /**
+     * Maneja la selección de un elemento del navigation drawer.
+     *
+     * @param menuItem elemento del navigation drawer seleccionado
+     * @return {@code true} si el elemento fue manejado, {@code false} en caso contrario
+     */
+    @Override
+    public boolean onNavigationItemSelected (@NonNull MenuItem menuItem) {
+        if (menuItem.getItemId () == R.id.mnuBrowse) {
+            openBrowseActivity ();
+            return true;
+        }
+
+        if (menuItem.getItemId () == R.id.mnuPhoneCall) {
+            if (!CheckCallPermission ()) {
+                RequestPhoneCallPermission ();
+                return false;
+            }
+
+            openCallActivity ();
+            return false;
+        }
+
+        return false;
+    }
 }

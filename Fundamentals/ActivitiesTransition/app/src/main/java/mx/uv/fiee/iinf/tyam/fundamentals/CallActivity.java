@@ -3,7 +3,9 @@ package mx.uv.fiee.iinf.tyam.fundamentals;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +21,16 @@ public class CallActivity extends AppCompatActivity {
         binding = ActivityCallBinding.inflate (getLayoutInflater ());
         setContentView (binding.getRoot ());
 
+        // Configura la Toolbar y el título.
+        setSupportActionBar(binding.callToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setTitle(R.string.call_title);
+
         binding.btnCall.setOnClickListener(v -> {
+            var uri = Uri.parse("tel:1234567890");
+            var intent = new Intent(Intent.ACTION_CALL, uri);
+            startActivity(intent);
         });
 
         /**
@@ -47,4 +58,19 @@ public class CallActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Maneja la selección de un elemento del navigation drawer.
+     * @param item The menu item that was selected.
+     *
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+        {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
