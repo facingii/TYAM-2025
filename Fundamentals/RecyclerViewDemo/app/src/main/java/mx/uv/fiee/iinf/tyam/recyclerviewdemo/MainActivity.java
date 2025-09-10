@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import mx.uv.fiee.iinf.tyam.recyclerviewdemo.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,9 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         var employeeList = Utils.GetEmployeeList (this);
         binding.rv.setLayoutManager (new LinearLayoutManager (this, LinearLayoutManager.VERTICAL, false));
-        binding.rv.setAdapter (new CustomAdapter (employeeList));
-
-        var c = new CustomAdapter(employeeList);
+        binding.rv.setAdapter (new CustomAdapter (employeeList, position -> {
+            var employee = employeeList.get (position);
+            Snackbar.make (binding.rv, employee.title (), Snackbar.LENGTH_LONG).show ();
+        }));
     }
 
 }

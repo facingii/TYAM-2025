@@ -13,8 +13,10 @@ class CustomViewHolder extends RecyclerView.ViewHolder
     TextView tvDesc;
     ImageView picture;
 
-    public CustomViewHolder(@NonNull View itemView) {
+    public CustomViewHolder (@NonNull View itemView, OnItemSelectListener listener) {
         super(itemView);
+
+        itemView.setOnClickListener (v -> listener.OnItemSelect (getBindingAdapterPosition ()));
 
         tvTitle = itemView.findViewById (R.id.tvTitle);
         tvDesc = itemView.findViewById (R.id.tvDesc);

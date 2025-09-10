@@ -8,12 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+interface OnItemSelectListener {
+    void OnItemSelect (int position);
+}
+
 class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>
 {
     private final List<Employee> employeeList;
+    private final OnItemSelectListener listener;
 
-    public CustomAdapter(List<Employee> data)  {
+    public CustomAdapter(List<Employee> data, OnItemSelectListener listener)  {
         employeeList = data;
+        this.listener = listener;
     }
 
     @NonNull
@@ -21,8 +27,7 @@ class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder>
     public CustomViewHolder onCreateViewHolder (@NonNull ViewGroup parent, int viewType) {
         var inflater = LayoutInflater.from (parent.getContext ());
         var view = inflater.inflate (R.layout.list_item, parent, false);
-
-        return new CustomViewHolder (view);
+        return new CustomViewHolder (view, listener);
     }
 
     @Override
