@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RecyclerViewDemo</string>
+    <string name="profile_picture">Profile picture</string>
+</resources>
