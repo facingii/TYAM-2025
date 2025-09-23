@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarDetails"
+        android:background="@color/design_default_color_primary"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:titleTextColor="@color/white"
+        android:layout_height="?attr/actionBarSize"
+        />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarDetails"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/user_details"
+        android:textSize="18pt"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:text="@string/first_name"
+        android:gravity="center_vertical"
+        android:layout_alignTop="@id/tvName"
+        android:layout_alignBottom="@id/tvName"
+        android:layout_below="@id/title"
+        android:layout_marginEnd="@dimen/textViewMarginLeft"
+        android:layout_marginStart="@dimen/textViewMarginRight"
+        />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:layout_toEndOf="@id/textView1"
+        android:layout_below="@id/title"
+        android:layout_marginEnd="@dimen/editTextMarginRight"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:text="@string/last_name"
+        android:gravity="center_vertical"
+        android:layout_below="@id/textView1"
+        android:layout_alignTop="@id/tvLastName"
+        android:layout_alignBottom="@id/tvLastName"
+        android:layout_marginEnd="@dimen/textViewMarginLeft"
+        android:layout_marginStart="@dimen/textViewMarginRight"
+        />
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:autofillHints="Type your first name"
+        android:layout_toEndOf="@id/textView2"
+        android:layout_below="@id/tvName"
+        android:layout_marginEnd="@dimen/editTextMarginRight"
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:text="@string/age"
+        android:gravity="center_vertical"
+        android:layout_alignTop="@id/tvAge"
+        android:layout_alignBottom="@id/tvAge"
+        android:layout_below="@id/textView2"
+        android:layout_marginEnd="@dimen/textViewMarginLeft"
+        android:layout_marginStart="@dimen/textViewMarginRight"
+        />
+
+    <TextView
+        android:id="@+id/tvAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:layout_toEndOf="@id/textView1"
+        android:layout_below="@id/tvLastName"
+        android:layout_marginEnd="@dimen/editTextMarginRight"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:text="@string/phone"
+        android:gravity="center_vertical"
+        android:layout_alignTop="@id/tvPhone"
+        android:layout_alignBottom="@id/tvPhone"
+        android:layout_below="@id/textView3"
+        android:layout_marginStart="@dimen/textViewMarginLeft"
+        android:layout_marginEnd="@dimen/textViewMarginRight"
+        />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/fontSize"
+        android:layout_toEndOf="@id/textView1"
+        android:layout_below="@id/tvAge"
+        android:layout_marginEnd="10dp"
+        />
+
+</RelativeLayout>
+
