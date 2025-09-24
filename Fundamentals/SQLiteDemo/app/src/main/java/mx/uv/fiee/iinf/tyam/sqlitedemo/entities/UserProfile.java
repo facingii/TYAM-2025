@@ -12,6 +12,8 @@ public class UserProfile implements Comparable<UserProfile> {
     public String lastName;
     public int age;
     public String phone;
+    public String email;
+    public String picture;
 
     @Override
     public int compareTo (UserProfile o) {

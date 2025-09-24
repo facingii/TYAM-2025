@@ -1,21 +1,42 @@
 package mx.uv.fiee.iinf.tyam.sqlitedemo;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
+import androidx.room.migration.Migration;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 import mx.uv.fiee.iinf.tyam.sqlitedemo.databinding.ActivityMainBinding;
 import mx.uv.fiee.iinf.tyam.sqlitedemo.db.AppDatabase;
 import mx.uv.fiee.iinf.tyam.sqlitedemo.entities.UserProfile;
+import mx.uv.fiee.iinf.tyam.sqlitedemo.utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
     private static String TAG = "MM";
@@ -27,10 +48,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate (savedInstanceState);
 
         binding = ActivityMainBinding.inflate (getLayoutInflater ());
-        db = Room.databaseBuilder (this, AppDatabase.class, "userProfile").build ();
+        db = Room
+                .databaseBuilder (this, AppDatabase.class, "userProfile")
+                .addMigrations(Utils.UpgradeV2)
+                .build ();
 
         setContentView (binding.getRoot ());
         setSupportActionBar (binding.toolbarMain);
+
+        binding.profilePic.setOnClickListener (v -> {
+            openGallery ();
+        });
 
         binding.btnSave.setOnClickListener(v ->
         {
@@ -38,12 +66,23 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            if (saveForm ()) {
-                Snackbar.make (binding.getRoot (), "User saved", Snackbar.LENGTH_SHORT).show ();
-                clearFields ();
-            } else {
-                Snackbar.make (binding.getRoot (), "Error saving user", Snackbar.LENGTH_SHORT).show ();
-            }
+            var userProfile = new UserProfile ();
+            userProfile.firstName = binding.edtName.getText ().toString ();
+            userProfile.lastName = binding.edtLastName.getText ().toString ();
+            userProfile.age = Integer.parseInt (binding.edtAge.getText ().toString ());
+            userProfile.phone = binding.edtPhone.getText ().toString ();
+
+            CompletableFuture.supplyAsync (() -> saveForm (userProfile))
+                    .thenAccept (opt -> {
+                        var result = opt.orElse (false);
+                        if (result) {
+                            Snackbar.make (binding.getRoot (), "User saved", Snackbar.LENGTH_SHORT).show ();
+                            savePicture (getContentResolver (), binding.profilePic.getDrawable());
+                            clearFields ();
+                        } else {
+                            Snackbar.make (binding.getRoot (), "Error saving user", Snackbar.LENGTH_SHORT).show ();
+                        }
+                    });
         });
     }
 
@@ -104,23 +143,16 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private boolean saveForm () {
-        var userProfile = new UserProfile ();
-        userProfile.firstName = binding.edtName.getText ().toString ();
-        userProfile.lastName = binding.edtLastName.getText ().toString ();
-        userProfile.age = Integer.parseInt (binding.edtAge.getText ().toString ());
-        userProfile.phone = binding.edtPhone.getText ().toString ();
-
+    private Optional<Boolean> saveForm (UserProfile userProfile) {
         try {
-            new Thread (() -> db.userProfileDao ().insertProfile (userProfile))
-                    .start ();
+            db.userProfileDao ().insertProfile (userProfile);
         }
         catch (Exception e) {
             Log.e (TAG, e.getMessage ());
-            return false;
+            return Optional.empty ();
         }
 
-        return true;
+        return Optional.of(true);
     }
 
     private void clearFields () {
@@ -128,6 +160,61 @@ public class MainActivity extends AppCompatActivity {
         binding.edtLastName.setText ("");
         binding.edtAge.setText ("");
         binding.edtPhone.setText ("");
+    }
+
+    private void openGallery () {
+        var intent = new Intent ();
+        intent.setAction (Intent.ACTION_GET_CONTENT);
+        intent.setType ("image/*");
+        galleryActivityResult.launch(intent);
+    }
+
+    /**
+     * Activity Result Launcher for Gallery
+     *
+     */
+    ActivityResultLauncher<Intent> galleryActivityResult = registerForActivityResult (new ActivityResultContracts.StartActivityForResult (), result -> {
+        if (result.getResultCode () == RESULT_OK) {
+            var uri = result.getData ().getData ();
+            InputStream inputStream = null;
+
+            try {
+                inputStream = getContentResolver ().openInputStream (uri);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            var bitmap = BitmapFactory.decodeStream (inputStream);
+            binding.profilePic.setImageBitmap (bitmap);
+        }
+    });
+
+    private boolean savePicture (ContentResolver contentResolver, Drawable drawable) {
+        if (!(drawable instanceof BitmapDrawable)) {
+            return false;
+        }
+        var bitmap = ((BitmapDrawable) drawable).getBitmap();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+        contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, UUID.randomUUID().toString() + ".jpg");
+
+        Uri imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+        if (imageUri == null) {
+            return false;
+        }
+
+        try (OutputStream outputStream = contentResolver.openOutputStream(imageUri)) {
+            if (outputStream == null) {
+                return false;
+            }
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 
