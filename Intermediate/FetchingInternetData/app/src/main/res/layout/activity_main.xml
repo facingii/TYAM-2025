@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/design_default_color_primary_dark"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <Button
+        android:id="@+id/btn_fetch_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fetch Text" />
+
+    <Button
+        android:id="@+id/btn_fetch_json"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fetch JSON" />
+
+    <Button
+        android:id="@+id/btn_fetch_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fetch Image" />
+
+    <Button
+        android:id="@+id/btnPostData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Data"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>
