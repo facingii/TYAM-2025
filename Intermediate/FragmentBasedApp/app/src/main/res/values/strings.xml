@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FragmentBasedApp</string>
+    <string name="review_article1">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur ultricies sem, vehicula faucibus metus convallis bibendum. Nam dapibus efficitur tempor. Donec vulputate lorem feugiat mi fermentum, eu posuere orci posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur id leo sed magna iaculis sollicitudin sit amet bibendum dui. Quisque commodo iaculis scelerisque. Maecenas in nunc nulla. Vestibulum quis ultricies diam. Proin vestibulum mauris mi, ac consequat dolor volutpat id. Cras eros augue, semper egestas imperdiet ut, mattis nec sem.  Maecenas mattis hendrerit magna, vitae elementum sapien aliquam ut. Vivamus nunc lorem, dignissim non lectus eu, lacinia imperdiet turpis. Cras viverra scelerisque tincidunt. Phasellus laoreet metus vel lacus molestie rutrum. Morbi tincidunt porta velit id gravida. Suspendisse sed scelerisque metus, ac sodales mi. Etiam a orci volutpat, tincidunt enim ac, auctor velit. Duis arcu est, tristique eu lectus nec, porta tempus nisi.  "</string>
+    <string name="review_article2">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur ultricies sem, vehicula faucibus metus convallis bibendum. Nam dapibus efficitur tempor. Donec vulputate lorem feugiat mi fermentum, eu posuere orci posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur id leo sed magna iaculis sollicitudin sit amet bibendum dui. Quisque commodo iaculis scelerisque. Maecenas in nunc nulla. Vestibulum quis ultricies diam. Proin vestibulum mauris mi, ac consequat dolor volutpat id. Cras eros augue, semper egestas imperdiet ut, mattis nec sem.  Maecenas mattis hendrerit magna, vitae elementum sapien aliquam ut. Vivamus nunc lorem, dignissim non lectus eu, lacinia imperdiet turpis. Cras viverra scelerisque tincidunt. Phasellus laoreet metus vel lacus molestie rutrum. Morbi tincidunt porta velit id gravida. Suspendisse sed scelerisque metus, ac sodales mi. Etiam a orci volutpat, tincidunt enim ac, auctor velit. Duis arcu est, tristique eu lectus nec, porta tempus nisi.  "</string>
+    <string name="toolbar_title">Article Reviews</string>
+    <string name="article_2">Article 2</string>
+    <string name="buy_it">Buy it</string>
+    <string name="article_1">Article 1</string>
+    <string name="settings">Settings</string>
+    <string name="items_selected">Items Selected</string>
+    <string name="go_to_payment">Go to payment</string>
+    <string name="cart_shop">Cart Shop</string>
+
+</resources>

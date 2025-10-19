@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:text="Article 1" />
+
+    <ImageView
+        android:id="@+id/ivArticle"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="10dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <Button
+        android:id="@+id/btnBuyIt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivArticle"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:text="Buy it" />
+
+
+    <TextView
+        android:id="@+id/tvArticle1Review"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvTitle"
+        android:layout_toEndOf="@id/btnBuyIt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp" />
+
+</RelativeLayout>
