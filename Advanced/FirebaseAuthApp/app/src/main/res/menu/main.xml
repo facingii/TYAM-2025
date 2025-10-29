@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/mnuAnonymous" android:title="Anonymous Sign in" app:showAsAction="never" />
+    <item android:id="@+id/mnuRegister" android:title="Register" app:showAsAction="never" />
+    <item android:id="@+id/mnuGoogleSignin" android:title="Google Sign in" app:showAsAction="never" />
+    <item android:id="@+id/mnuGithubSignin" android:title="Github Sign in" app:showAsAction="never" />
+
+</menu>

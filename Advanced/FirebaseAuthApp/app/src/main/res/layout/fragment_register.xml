@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="44sp"
+        android:padding="20dp"
+        android:text="Register" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tvEmailRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            />
+
+        <EditText
+            android:id="@+id/etEmailRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/etPasswordlRegister" />
+
+        <TextView
+            android:id="@+id/tvPasswordRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvEmailRegister"
+            android:layout_marginTop="20dp"
+            android:text="Password"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+            />
+
+        <EditText
+            android:id="@+id/etPasswordlRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvEmailRegister"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@id/tvPasswordRegister"
+            android:inputType="textPassword" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        android:text="Register" />
+
+</LinearLayout>
