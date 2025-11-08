@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mnuAdd"
+        android:title="Add Item"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/mnuLoad"
+        android:title="Load products"
+        app:showAsAction="never"
+        />
+</menu>
